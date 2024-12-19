@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 try:
-    usr = "" 
-    pwd = ""
+    usr = "bludgeon0@gmail.com" 
+    pwd = "Taivnqq12"
 
     driver = None
 
@@ -17,18 +17,18 @@ try:
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    driver.get('https://www.facebook.com/')
-    print("Opened Facebook")
+    driver.get('https://erp.e-mongolia.mn/login')
 
-    driver.find_element(By.NAME, "email").send_keys(usr)
-    print("Email Id entered")
+    username_field = driver.find_element(By.XPATH, "//input[@placeholder='Нэвтрэх нэр']")
+    username_field.send_keys(usr)   
     sleep(1)
 
-    driver.find_element(By.NAME, "pass").send_keys(pwd)
+    password_field = driver.find_element(By.XPATH, "//input[@placeholder='Нууц үг']")
+    password_field.send_keys(pwd)
     print("Password entered")
 
-    driver.find_element(By.NAME, "login").click()
-
+    login_button = driver.find_element(By.XPATH, "//button[contains(@class, 'el-button enterButton') and span[text()='Нэвтрэх']]")
+    login_button.click()
     sleep(10)
 
 except Exception as e:
@@ -36,5 +36,6 @@ except Exception as e:
 
 finally:
     if 'driver' in locals() and driver is not None:
+        sleep(12)
         driver.quit()
         print("Driver quit successfully.")
