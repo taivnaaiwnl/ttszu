@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 try:
-    usr = "bludgeon0@gmail.com" 
-    pwd = "Taivnqq12"
+    usr = "<your username>" 
+    pwd = "<your password>"
 
     driver = None
 
